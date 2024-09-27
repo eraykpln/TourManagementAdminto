@@ -119,12 +119,13 @@ const VectorMaps = React.lazy(() => import("../pages/maps/VectorMaps"));
 // lamding
 const Landing = React.lazy(() => import("../pages/Landing"));
 
-// new components
-const Tours = React.lazy(() => import("../components/TourList"));
-
 // customers
 const CustomerListPage = React.lazy(() => import('../pages/customers/customer-list'));
 const AddCustomerPage = React.lazy(() => import('../pages/customers/add-customer'));
+
+// tours
+const AddTourPage = React.lazy(() => import('../pages/tours/add-tour'));
+const TourListPage = React.lazy(() => import('../pages/tours/tour-list'));
 
 // reservations
 const AddReservationPage = React.lazy(() => import('../pages/reservations/add-reservation'));
@@ -265,10 +266,6 @@ const AllRoutes = () => {
             {
               path: "starter",
               element: <LoadComponent component={Starter} />,
-            },
-            {
-              path: "tours",
-              element: <LoadComponent component={Tours} />,
             },
             {
               path: "pricing",
@@ -501,6 +498,19 @@ const AllRoutes = () => {
             {
               path: 'add',
               element: <LoadComponent component={AddCustomerPage} />,
+            },
+          ],
+        },
+        {
+          path: 'tours',
+          children: [
+            {
+              path: 'add',
+              element: <LoadComponent component={AddTourPage} />,
+            },
+            {
+              path: 'list',
+              element: <LoadComponent component={TourListPage} />,
             },
           ],
         },

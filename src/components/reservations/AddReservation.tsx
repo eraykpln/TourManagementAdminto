@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { FormInput } from '../form';
-import { tours } from '../../pages/tours/tours'; // Assuming tours data is available here
+import { tours } from '../tours/TourList'; // Correct import path
 import Table from '../Table'; // Assuming Table component is available here
 
 interface IFormInput {
@@ -109,7 +109,7 @@ const AddReservation = () => {
                                                     register={register}
                                                     errors={errors}
                                                 >
-                                                    {tours.map((tour, index) => (
+                                                    {tours.map((tour: { name: string }, index: number) => (
                                                         <option key={index} value={tour.name}>
                                                             {tour.name}
                                                         </option>
@@ -146,8 +146,8 @@ const AddReservation = () => {
                                                     errors={errors}
                                                 >
                                                     {/* Assuming hotels data is available */}
-                                                    <option value="Hotel A">Hotel A</option>
-                                                    <option value="Hotel B">Hotel B</option>
+                                                    <option value="Hotel 1">Hotel 1</option>
+                                                    <option value="Hotel 2">Hotel 2</option>
                                                 </FormInput>
                                                 <ul className="pager wizard mb-0 list-inline text-end mt-2">
                                                     <li className="previous list-inline-item">

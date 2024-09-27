@@ -46,6 +46,26 @@ const MENU_ITEMS: MenuItemTypes[] = [
         ],
     },
     {
+        key: 'tours',
+        label: 'Tours',
+        isTitle: false,
+        icon: 'mdi mdi-map-outline',
+        children: [
+            {
+                key: 'add-tour',
+                label: 'Add Tour',
+                url: '/tours/add',
+                parentKey: 'tours',
+            },
+            {
+                key: 'tour-list',
+                label: 'Tour List',
+                url: '/tours/list',
+                parentKey: 'tours', 
+            },
+        ],
+    },
+    {
         key: 'reservations',
         label: 'Reservations',
         isTitle: false,
