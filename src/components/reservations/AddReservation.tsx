@@ -72,7 +72,7 @@ const AddReservation = () => {
                                 </Nav.Item>
                                 <Nav.Item as="li">
                                     <Nav.Link eventKey="hotel" className="rounded-0 pt-2 pb-2">
-                                        <i className="mdi mdi-hotel me-1"></i>
+                                        <i className="mdi mdi-city me-1"></i>
                                         <span className="d-none d-sm-inline">Hotel</span>
                                     </Nav.Link>
                                 </Nav.Item>

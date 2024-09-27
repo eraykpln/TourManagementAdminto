@@ -66,6 +66,32 @@ const MENU_ITEMS: MenuItemTypes[] = [
         ],
     },
     {
+        key: 'hotels',
+        label: 'Hotels',
+        isTitle: false,
+        icon: 'mdi mdi-city',
+        children: [
+            {
+                key: 'add-hotel',
+                label: 'Add Hotel',
+                url: '/hotels/add',
+                parentKey: 'hotels',
+            },
+            {
+                key: 'hotel-list',
+                label: 'Hotel List',
+                url: '/hotels/list',
+                parentKey: 'hotels',
+            },
+            {
+                key: 'roomtype',
+                label: 'Room Types',
+                url: '/hotels/roomtype',
+                parentKey: 'hotels',
+            },
+        ],
+    },
+    {
         key: 'reservations',
         label: 'Reservations',
         isTitle: false,

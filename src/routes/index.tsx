@@ -132,6 +132,11 @@ const TourDetailPage = React.lazy(() => import('../pages/tours/TourDetailPage'))
 const AddReservationPage = React.lazy(() => import('../pages/reservations/add-reservation'));
 const ReservationListPage = React.lazy(() => import('../pages/reservations/reservation-list'));
 
+// hotels
+const AddHotelPage = React.lazy(() => import('../pages/hotels/AddHotelPage'));
+const HotelListPage = React.lazy(() => import('../pages/hotels/HotelListPage'));
+const RoomtypePage = React.lazy(() => import('../pages/hotels/RoomtypePage'));
+
 const loading = () => <div className=""></div>;
 
 type LoadComponentProps = {
@@ -519,6 +524,23 @@ const AllRoutes = () => {
             },
           ],
         },
+        {
+          path: 'hotels',
+          children: [
+              {
+                  path: 'add',
+                  element: <LoadComponent component={AddHotelPage} />,
+              },
+              {
+                  path: 'list',
+                  element: <LoadComponent component={HotelListPage} />,
+              },
+              {
+                  path: 'roomtype',
+                  element: <LoadComponent component={RoomtypePage} />,
+              },
+          ],
+      },
         {
           path: 'reservations',
           children: [

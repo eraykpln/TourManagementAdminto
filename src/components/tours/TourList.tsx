@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Col, Row, Button } from 'react-bootstrap';
 import Table from '../Table';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const tours = [
     { id: 1, name: 'Tour 1', date: '2023-10-01', price: 100, description: 'Description 1' },
@@ -37,6 +37,12 @@ const sizePerPageList = [
 ];
 
 const TourList = () => {
+    const navigate = useNavigate();
+
+    const handleAddTour = () => {
+        navigate('/tours/add');
+    };
+
     return (
         <Row>
             <Col xs={12}>
@@ -44,7 +50,7 @@ const TourList = () => {
                     <Card.Body>
                         <div className="d-flex justify-content-between align-items-center mb-3">
                             <h4 className="header-title">Tour List</h4>
-                            <Button variant="primary" onClick={() => console.log('Add Tour')}>
+                            <Button variant="primary" onClick={handleAddTour}>
                                 Add Tour
                             </Button>
                         </div>
