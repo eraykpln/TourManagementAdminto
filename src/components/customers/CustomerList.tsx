@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import Table from '../../components/Table';
 
 // Dummy data
@@ -69,12 +70,23 @@ const sizePerPageList = [
 ];
 
 const CustomerList = () => {
+    const navigate = useNavigate();
+
+    const handleAddCustomer = () => {
+        navigate('/customers/add');
+    };
+
     return (
         <Row>
             <Col xs={12}>
                 <Card>
                     <Card.Body>
-                        <h4 className="header-title">Customer List</h4>
+                        <div className="d-flex justify-content-between align-items-center mb-3">
+                            <h4 className="header-title">Customer List</h4>
+                            <Button variant="primary" onClick={handleAddCustomer}>
+                                Add Customer
+                            </Button>
+                        </div>
                         <Table
                             columns={columns}
                             data={customers}
