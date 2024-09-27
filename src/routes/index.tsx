@@ -126,6 +126,7 @@ const AddCustomerPage = React.lazy(() => import('../pages/customers/add-customer
 // tours
 const AddTourPage = React.lazy(() => import('../pages/tours/add-tour'));
 const TourListPage = React.lazy(() => import('../pages/tours/tour-list'));
+const TourDetailPage = React.lazy(() => import('../pages/tours/TourDetailPage'));
 
 // reservations
 const AddReservationPage = React.lazy(() => import('../pages/reservations/add-reservation'));
@@ -511,6 +512,10 @@ const AllRoutes = () => {
             {
               path: 'list',
               element: <LoadComponent component={TourListPage} />,
+            },
+            {
+              path: ':id',
+              element: <TourDetailPage />,
             },
           ],
         },

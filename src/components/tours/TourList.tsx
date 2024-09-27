@@ -1,13 +1,15 @@
 import React from 'react';
 import { Card, Col, Row, Button } from 'react-bootstrap';
 import Table from '../Table';
+import { Link } from 'react-router-dom';
 
 export const tours = [
-    { id: 1, name: 'Tour 1', date: '2023-10-01', price: 100 },
-    { id: 2, name: 'Tour 2', date: '2023-10-02', price: 200 },
-    { id: 3, name: 'Tour 3', date: '2023-10-03', price: 300 },
-    { id: 4, name: 'Tour 4', date: '2023-10-04', price: 400 },
-    { id: 5, name: 'Tour 5', date: '2023-10-05', price: 500 },
+    { id: 1, name: 'Tour 1', date: '2023-10-01', price: 100, description: 'Description 1' },
+    { id: 2, name: 'Tour 2', date: '2023-10-02', price: 200, description: 'Description 2' },
+    { id: 3, name: 'Tour 3', date: '2023-10-03', price: 300, description: 'Description 3' },
+    { id: 4, name: 'Tour 4', date: '2023-10-04', price: 400, description: 'Description 4' },
+    { id: 5, name: 'Tour 5', date: '2023-10-05', price: 500, description: 'Description 5' },
+    { id: 6, name: 'Tour 6', date: '2023-10-06', price: 600, description: 'Description 6' },
     // Add more dummy tours as needed
 ];
 
@@ -16,6 +18,15 @@ const columns = [
     { Header: 'Name', accessor: 'name', sort: true },
     { Header: 'Date', accessor: 'date', sort: true },
     { Header: 'Price', accessor: 'price', sort: true },
+    {
+        Header: 'Actions',
+        accessor: 'actions',
+        Cell: ({ row }: any) => (
+            <Link to={`/tours/${row.original.id}`} className="btn btn-primary">
+                View Details
+            </Link>
+        ),
+    },
 ];
 
 const sizePerPageList = [
