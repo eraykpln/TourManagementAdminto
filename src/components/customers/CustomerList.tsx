@@ -94,6 +94,7 @@ const CustomerList = () => {
                             sizePerPageList={sizePerPageList}
                             isSortable={true}
                             pagination={true}
+                            isSearchable={true}
                         />
                     </Card.Body>
                 </Card>

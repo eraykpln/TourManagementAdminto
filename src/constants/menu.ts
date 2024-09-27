@@ -46,6 +46,26 @@ const MENU_ITEMS: MenuItemTypes[] = [
         ],
     },
     {
+        key: 'reservations',
+        label: 'Reservations',
+        isTitle: false,
+        icon: 'mdi mdi-calendar-blank-outline',
+        children: [
+            {
+                key: 'add-reservation',
+                label: 'Add Reservation',
+                url: '/reservations/add',
+                parentKey: 'reservations',
+            },
+            {
+                key: 'reservation-list',
+                label: 'Reservation List',
+                url: '/reservations/list',
+                parentKey: 'reservations',
+            },
+        ],
+    },
+    {
         key: 'apps-calendar',
         label: 'Calendar',
         isTitle: false,

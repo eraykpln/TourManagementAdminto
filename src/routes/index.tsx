@@ -126,6 +126,10 @@ const Tours = React.lazy(() => import("../components/TourList"));
 const CustomerListPage = React.lazy(() => import('../pages/customers/customer-list'));
 const AddCustomerPage = React.lazy(() => import('../pages/customers/add-customer'));
 
+// reservations
+const AddReservationPage = React.lazy(() => import('../pages/reservations/add-reservation'));
+const ReservationListPage = React.lazy(() => import('../pages/reservations/reservation-list'));
+
 const loading = () => <div className=""></div>;
 
 type LoadComponentProps = {
@@ -497,6 +501,19 @@ const AllRoutes = () => {
             {
               path: 'add',
               element: <LoadComponent component={AddCustomerPage} />,
+            },
+          ],
+        },
+        {
+          path: 'reservations',
+          children: [
+            {
+              path: 'add',
+              element: <LoadComponent component={AddReservationPage} />,
+            },
+            {
+              path: 'list',
+              element: <LoadComponent component={ReservationListPage} />,
             },
           ],
         },
