@@ -1,10 +1,7 @@
-<<<<<<< HEAD
+
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
-=======
-import React, { Suspense } from "react";
-import { useRoutes } from "react-router-dom";
->>>>>>> f7313d5dd9b1b1521cec28db13f39b2d51a021f9
+
 
 // layouts
 import DefaultLayout from "../layouts/Default";
