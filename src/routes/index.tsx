@@ -1,115 +1,129 @@
+<<<<<<< HEAD
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
+=======
+import React, { Suspense } from "react";
+import { useRoutes } from "react-router-dom";
+>>>>>>> f7313d5dd9b1b1521cec28db13f39b2d51a021f9
 
 // layouts
-import DefaultLayout from '../layouts/Default';
-import VerticalLayout from '../layouts/Vertical';
-import HorizontalLayout from '../layouts/Horizontal/';
+import DefaultLayout from "../layouts/Default";
+import VerticalLayout from "../layouts/Vertical";
+import HorizontalLayout from "../layouts/Horizontal/";
 
 // components
-import PrivateRoute from './PrivateRoute';
-import Root from './Root';
+import PrivateRoute from "./PrivateRoute";
+import Root from "./Root";
 
 
 // constants
-import { LayoutTypes } from '../constants';
+import { LayoutTypes } from "../constants";
 
 // hooks
-import { useRedux } from '../hooks';
+import { useRedux } from "../hooks";
 
 // lazy load all the views
 // auth
-const Login = React.lazy(() => import('../pages/auth/Login'));
-const Register = React.lazy(() => import('../pages/auth/Register'));
-const Confirm = React.lazy(() => import('../pages/auth/Confirm'));
-const ForgetPassword = React.lazy(() => import('../pages/auth/ForgetPassword'));
-const LockScreen = React.lazy(() => import('../pages/auth/LockScreen'));
-const Logout = React.lazy(() => import('../pages/auth/Logout'));
+const Login = React.lazy(() => import("../pages/auth/Login"));
+const Register = React.lazy(() => import("../pages/auth/Register"));
+const Confirm = React.lazy(() => import("../pages/auth/Confirm"));
+const ForgetPassword = React.lazy(() => import("../pages/auth/ForgetPassword"));
+const LockScreen = React.lazy(() => import("../pages/auth/LockScreen"));
+const Logout = React.lazy(() => import("../pages/auth/Logout"));
 
 // dashboards
-const DashBoard1 = React.lazy(() => import('../pages/dashboards/DashBoard1/'));
+const DashBoard1 = React.lazy(() => import("../pages/dashboards/DashBoard1/"));
 
 // apps
-const CalendarApp = React.lazy(() => import('../pages/apps/Calendar'));
-const ChatApp = React.lazy(() => import('../pages/apps/Chat'));
-const Inbox = React.lazy(() => import('../pages/apps/Email/Inbox'));
-const Kanban = React.lazy(() => import('../pages/apps/Tasks/Board'));
-const TaskDetail = React.lazy(() => import('../pages/apps/Tasks/Detail'));
-const Projects = React.lazy(() => import('../pages/apps/Projects'));
-const List = React.lazy(() => import('../pages/apps/Contacts/List'));
-const Profile = React.lazy(() => import('../pages/apps/Contacts/Profile'));
+const CalendarApp = React.lazy(() => import("../pages/apps/Calendar"));
+const ChatApp = React.lazy(() => import("../pages/apps/Chat"));
+const Inbox = React.lazy(() => import("../pages/apps/Email/Inbox"));
+const Kanban = React.lazy(() => import("../pages/apps/Tasks/Board"));
+const TaskDetail = React.lazy(() => import("../pages/apps/Tasks/Detail"));
+const Projects = React.lazy(() => import("../pages/apps/Projects"));
+const List = React.lazy(() => import("../pages/apps/Contacts/List"));
+const Profile = React.lazy(() => import("../pages/apps/Contacts/Profile"));
 
 // extra pages
-const Starter = React.lazy(() => import('../pages/other/Starter'));
-const Pricing = React.lazy(() => import('../pages/other/Pricing'));
-const Timeline = React.lazy(() => import('../pages/other/Timeline'));
-const Invoice = React.lazy(() => import('../pages/other/Invoice'));
-const FAQ = React.lazy(() => import('../pages/other/FAQ'));
-const Gallery = React.lazy(() => import('../pages/other/Gallery'));
-const Error404 = React.lazy(() => import('../pages/other/Error404'));
-const Error500 = React.lazy(() => import('../pages/other/Error500'));
-const Maintenance = React.lazy(() => import('../pages/other/Maintenance'));
-const ComingSoon = React.lazy(() => import('../pages/other/ComingSoon'));
+const Starter = React.lazy(() => import("../pages/other/Starter"));
+const Pricing = React.lazy(() => import("../pages/other/Pricing"));
+const Timeline = React.lazy(() => import("../pages/other/Timeline"));
+const Invoice = React.lazy(() => import("../pages/other/Invoice"));
+const FAQ = React.lazy(() => import("../pages/other/FAQ"));
+const Gallery = React.lazy(() => import("../pages/other/Gallery"));
+const Error404 = React.lazy(() => import("../pages/other/Error404"));
+const Error500 = React.lazy(() => import("../pages/other/Error500"));
+const Maintenance = React.lazy(() => import("../pages/other/Maintenance"));
+const ComingSoon = React.lazy(() => import("../pages/other/ComingSoon"));
 
 // base ui
-const Buttons = React.lazy(() => import('../pages/uikit/Buttons'));
-const Cards = React.lazy(() => import('../pages/uikit/Cards'));
-const Avatars = React.lazy(() => import('../pages/uikit/Avatars'));
-const TabsAccordions = React.lazy(() => import('../pages/uikit/TabsAccordions'));
-const Notifications = React.lazy(() => import('../pages/uikit/Notifications'));
-const Modals = React.lazy(() => import('../pages/uikit/Modals'));
-const Progress = React.lazy(() => import('../pages/uikit/Progress'));
-const Offcanvases = React.lazy(() => import('../pages/uikit/Offcanvases'));
-const Placeholders = React.lazy(() => import('../pages/uikit/Placeholders'));
-const Spinners = React.lazy(() => import('../pages/uikit/Spinners'));
-const Images = React.lazy(() => import('../pages/uikit/Images'));
-const Carousel = React.lazy(() => import('../pages/uikit/Carousel'));
-const EmbedVedio = React.lazy(() => import('../pages/uikit/EmbedVideo'));
-const Dropdowns = React.lazy(() => import('../pages/uikit/Dropdowns'));
-const PopoversAndTooltips = React.lazy(() => import('../pages/uikit/PopoversAndTooltips'));
-const GeneralUI = React.lazy(() => import('../pages/uikit/GeneralUI'));
-const Typography = React.lazy(() => import('../pages/uikit/Typography'));
-const Grid = React.lazy(() => import('../pages/uikit/Grid'));
+const Buttons = React.lazy(() => import("../pages/uikit/Buttons"));
+const Cards = React.lazy(() => import("../pages/uikit/Cards"));
+const Avatars = React.lazy(() => import("../pages/uikit/Avatars"));
+const TabsAccordions = React.lazy(
+  () => import("../pages/uikit/TabsAccordions")
+);
+const Notifications = React.lazy(() => import("../pages/uikit/Notifications"));
+const Modals = React.lazy(() => import("../pages/uikit/Modals"));
+const Progress = React.lazy(() => import("../pages/uikit/Progress"));
+const Offcanvases = React.lazy(() => import("../pages/uikit/Offcanvases"));
+const Placeholders = React.lazy(() => import("../pages/uikit/Placeholders"));
+const Spinners = React.lazy(() => import("../pages/uikit/Spinners"));
+const Images = React.lazy(() => import("../pages/uikit/Images"));
+const Carousel = React.lazy(() => import("../pages/uikit/Carousel"));
+const EmbedVedio = React.lazy(() => import("../pages/uikit/EmbedVideo"));
+const Dropdowns = React.lazy(() => import("../pages/uikit/Dropdowns"));
+const PopoversAndTooltips = React.lazy(
+  () => import("../pages/uikit/PopoversAndTooltips")
+);
+const GeneralUI = React.lazy(() => import("../pages/uikit/GeneralUI"));
+const Typography = React.lazy(() => import("../pages/uikit/Typography"));
+const Grid = React.lazy(() => import("../pages/uikit/Grid"));
 
 // widgets
-const Widgets = React.lazy(() => import('../pages/uikit/Widgets'));
+const Widgets = React.lazy(() => import("../pages/uikit/Widgets"));
 
 // extended ui
-const RangeSliders = React.lazy(() => import('../pages/uikit/RangeSlider'));
-const NestableList = React.lazy(() => import('../pages/uikit/NestableList'));
-const SweetAlerts = React.lazy(() => import('../pages/uikit/SweetAlerts'));
-const Tourpage = React.lazy(() => import('../pages/uikit/TourPage'));
-const TreeViewExample = React.lazy(() => import('../pages/uikit/TreeView'));
+const RangeSliders = React.lazy(() => import("../pages/uikit/RangeSlider"));
+const NestableList = React.lazy(() => import("../pages/uikit/NestableList"));
+const SweetAlerts = React.lazy(() => import("../pages/uikit/SweetAlerts"));
+const Tourpage = React.lazy(() => import("../pages/uikit/TourPage"));
+const TreeViewExample = React.lazy(() => import("../pages/uikit/TreeView"));
 
 // icons
-const FeatherIcons = React.lazy(() => import('../pages/icons/FeatherIcons'));
-const MDIIcons = React.lazy(() => import('../pages/icons/MDIIcons'));
-const Dripicons = React.lazy(() => import('../pages/icons/DripiIcons'));
-const FontAwesomeIcons = React.lazy(() => import('../pages/icons/FontAwesomeIcons'));
-const ThemifyIcons = React.lazy(() => import('../pages/icons/ThemifyIcons'));
+const FeatherIcons = React.lazy(() => import("../pages/icons/FeatherIcons"));
+const MDIIcons = React.lazy(() => import("../pages/icons/MDIIcons"));
+const Dripicons = React.lazy(() => import("../pages/icons/DripiIcons"));
+const FontAwesomeIcons = React.lazy(
+  () => import("../pages/icons/FontAwesomeIcons")
+);
+const ThemifyIcons = React.lazy(() => import("../pages/icons/ThemifyIcons"));
 
 // forms
-const GeneralElements = React.lazy(() => import('../pages/forms/Basic'));
-const FormAdvanced = React.lazy(() => import('../pages/forms/Advanced'));
-const Validation = React.lazy(() => import('../pages/forms/Validation'));
-const FormWizard = React.lazy(() => import('../pages/forms/Wizard'));
-const FileUpload = React.lazy(() => import('../pages/forms/FileUpload'));
-const Editors = React.lazy(() => import('../pages/forms/Editors'));
+const GeneralElements = React.lazy(() => import("../pages/forms/Basic"));
+const FormAdvanced = React.lazy(() => import("../pages/forms/Advanced"));
+const Validation = React.lazy(() => import("../pages/forms/Validation"));
+const FormWizard = React.lazy(() => import("../pages/forms/Wizard"));
+const FileUpload = React.lazy(() => import("../pages/forms/FileUpload"));
+const Editors = React.lazy(() => import("../pages/forms/Editors"));
 
 // tables
-const BasicTable = React.lazy(() => import('../pages/tables/BasicTable'));
-const AdvancedTable = React.lazy(() => import('../pages/tables/AdvancedTable'));
+const BasicTable = React.lazy(() => import("../pages/tables/BasicTable"));
+const AdvancedTable = React.lazy(() => import("../pages/tables/AdvancedTable"));
 
 // charts
-const ApexChart = React.lazy(() => import('../pages/chart/ApexChart'));
-const ChartJs = React.lazy(() => import('../pages/chart/ChartJs'));
+const ApexChart = React.lazy(() => import("../pages/chart/ApexChart"));
+const ChartJs = React.lazy(() => import("../pages/chart/ChartJs"));
 
 // maps
-const GoogleMaps = React.lazy(() => import('../pages/maps/GoogleMaps'));
-const VectorMaps = React.lazy(() => import('../pages/maps/VectorMaps'));
+const GoogleMaps = React.lazy(() => import("../pages/maps/GoogleMaps"));
+const VectorMaps = React.lazy(() => import("../pages/maps/VectorMaps"));
 
 // lamding
-const Landing = React.lazy(() => import('../pages/Landing'));
+const Landing = React.lazy(() => import("../pages/Landing"));
+
+// new components
+const Tours = React.lazy(() => import("../components/TourList"));
 
 // customers
 const CustomerListPage = React.lazy(() => import('../pages/customers/customer-list'));
@@ -150,315 +164,328 @@ const AllRoutes = () => {
   let Layout = getLayout();
 
   return useRoutes([
-    { path: '/', element: <Root /> },
+    { path: "/", element: <Root /> },
     {
       // public routes
-      path: '/',
+      path: "/",
       element: <DefaultLayout />,
       children: [
         {
-          path: 'auth',
+          path: "auth",
           children: [
-            { path: 'login', element: <LoadComponent component={Login} /> },
-            { path: 'register', element: <LoadComponent component={Register} /> },
-            { path: 'confirm', element: <LoadComponent component={Confirm} /> },
-            { path: 'forget-password', element: <LoadComponent component={ForgetPassword} /> },
-            { path: 'lock-screen', element: <LoadComponent component={LockScreen} /> },
-            { path: 'logout', element: <LoadComponent component={Logout} /> },
+            { path: "login", element: <LoadComponent component={Login} /> },
+            {
+              path: "register",
+              element: <LoadComponent component={Register} />,
+            },
+            { path: "confirm", element: <LoadComponent component={Confirm} /> },
+            {
+              path: "forget-password",
+              element: <LoadComponent component={ForgetPassword} />,
+            },
+            {
+              path: "lock-screen",
+              element: <LoadComponent component={LockScreen} />,
+            },
+            { path: "logout", element: <LoadComponent component={Logout} /> },
           ],
         },
         {
-          path: 'error-404',
+          path: "error-404",
           element: <LoadComponent component={Error404} />,
         },
         {
-          path: 'error-500',
+          path: "error-500",
           element: <LoadComponent component={Error500} />,
         },
         {
-          path: 'maintenance',
+          path: "maintenance",
           element: <LoadComponent component={Maintenance} />,
         },
         {
-          path: 'coming-soon',
+          path: "coming-soon",
           element: <LoadComponent component={ComingSoon} />,
         },
         {
-          path: 'landing',
+          path: "landing",
           element: <LoadComponent component={Landing} />,
         },
       ],
     },
     {
       // auth protected routes
-      path: '/',
-      element: <PrivateRoute roles={'Admin'} component={Layout} />,
+      path: "/",
+      element: <PrivateRoute roles={"Admin"} component={Layout} />,
       children: [
         {
-          path: 'dashboard',
+          path: "dashboard",
           element: <LoadComponent component={DashBoard1} />,
         },
         {
-          path: 'apps',
+          path: "apps",
           children: [
             {
-              path: 'calendar',
+              path: "calendar",
               element: <LoadComponent component={CalendarApp} />,
             },
             {
-              path: 'chat',
+              path: "chat",
               element: <LoadComponent component={ChatApp} />,
             },
             {
-              path: 'email/inbox',
+              path: "email/inbox",
               element: <LoadComponent component={Inbox} />,
             },
             {
-              path: 'tasks/kanban',
+              path: "tasks/kanban",
               element: <LoadComponent component={Kanban} />,
             },
             {
-              path: 'tasks/details',
+              path: "tasks/details",
               element: <LoadComponent component={TaskDetail} />,
             },
             {
-              path: 'projects',
+              path: "projects",
               element: <LoadComponent component={Projects} />,
             },
             {
-              path: 'contacts/list',
+              path: "contacts/list",
               element: <LoadComponent component={List} />,
             },
             {
-              path: 'contacts/profile',
+              path: "contacts/profile",
               element: <LoadComponent component={Profile} />,
             },
           ],
         },
         {
-          path: 'pages',
+          path: "pages",
           children: [
             {
-              path: 'starter',
+              path: "starter",
               element: <LoadComponent component={Starter} />,
             },
             {
-              path: 'pricing',
+              path: "tours",
+              element: <LoadComponent component={Tours} />,
+            },
+            {
+              path: "pricing",
               element: <LoadComponent component={Pricing} />,
             },
             {
-              path: 'timeline',
+              path: "timeline",
               element: <LoadComponent component={Timeline} />,
             },
             {
-              path: 'invoice',
+              path: "invoice",
               element: <LoadComponent component={Invoice} />,
             },
             {
-              path: 'faq',
+              path: "faq",
               element: <LoadComponent component={FAQ} />,
             },
             {
-              path: 'gallery',
+              path: "gallery",
               element: <LoadComponent component={Gallery} />,
             },
           ],
         },
         {
-          path: 'base-ui',
+          path: "base-ui",
           children: [
             {
-              path: 'buttons',
+              path: "buttons",
               element: <LoadComponent component={Buttons} />,
             },
             {
-              path: 'cards',
+              path: "cards",
               element: <LoadComponent component={Cards} />,
             },
             {
-              path: 'avatars',
+              path: "avatars",
               element: <LoadComponent component={Avatars} />,
             },
             {
-              path: 'tabs-accordions',
+              path: "tabs-accordions",
               element: <LoadComponent component={TabsAccordions} />,
             },
             {
-              path: 'notifications',
+              path: "notifications",
               element: <LoadComponent component={Notifications} />,
             },
             {
-              path: 'modals',
+              path: "modals",
               element: <LoadComponent component={Modals} />,
             },
             {
-              path: 'progress',
+              path: "progress",
               element: <LoadComponent component={Progress} />,
             },
             {
-              path: 'offcanvas',
+              path: "offcanvas",
               element: <LoadComponent component={Offcanvases} />,
             },
             {
-              path: 'placeholders',
+              path: "placeholders",
               element: <LoadComponent component={Placeholders} />,
             },
             {
-              path: 'spinners',
+              path: "spinners",
               element: <LoadComponent component={Spinners} />,
             },
             {
-              path: 'images',
+              path: "images",
               element: <LoadComponent component={Images} />,
             },
             {
-              path: 'carousel',
+              path: "carousel",
               element: <LoadComponent component={Carousel} />,
             },
             {
-              path: 'embedvideo',
+              path: "embedvideo",
               element: <LoadComponent component={EmbedVedio} />,
             },
             {
-              path: 'dropdowns',
+              path: "dropdowns",
               element: <LoadComponent component={Dropdowns} />,
             },
             {
-              path: 'popovers-tooltips',
+              path: "popovers-tooltips",
               element: <LoadComponent component={PopoversAndTooltips} />,
             },
             {
-              path: 'general',
+              path: "general",
               element: <LoadComponent component={GeneralUI} />,
             },
             {
-              path: 'typography',
+              path: "typography",
               element: <LoadComponent component={Typography} />,
             },
             {
-              path: 'grid',
+              path: "grid",
               element: <LoadComponent component={Grid} />,
             },
           ],
         },
         {
-          path: 'widgets',
+          path: "widgets",
           element: <LoadComponent component={Widgets} />,
         },
         {
-          path: 'extended-ui',
+          path: "extended-ui",
           children: [
             {
-              path: 'nestable',
+              path: "nestable",
               element: <LoadComponent component={NestableList} />,
             },
             {
-              path: 'rangesliders',
+              path: "rangesliders",
               element: <LoadComponent component={RangeSliders} />,
             },
             {
-              path: 'sweet-alert',
+              path: "sweet-alert",
               element: <LoadComponent component={SweetAlerts} />,
             },
             {
-              path: 'tour',
+              path: "tour",
               element: <LoadComponent component={Tourpage} />,
             },
             {
-              path: 'treeview',
+              path: "treeview",
               element: <LoadComponent component={TreeViewExample} />,
             },
           ],
         },
         {
-          path: 'icons',
+          path: "icons",
           children: [
             {
-              path: 'feather',
+              path: "feather",
               element: <LoadComponent component={FeatherIcons} />,
             },
             {
-              path: 'mdi',
+              path: "mdi",
               element: <LoadComponent component={MDIIcons} />,
             },
             {
-              path: 'dripicons',
+              path: "dripicons",
               element: <LoadComponent component={Dripicons} />,
             },
             {
-              path: 'font-awesome',
+              path: "font-awesome",
               element: <LoadComponent component={FontAwesomeIcons} />,
             },
             {
-              path: 'themify',
+              path: "themify",
               element: <LoadComponent component={ThemifyIcons} />,
             },
           ],
         },
         {
-          path: 'forms',
+          path: "forms",
           children: [
             {
-              path: 'basic',
+              path: "basic",
               element: <LoadComponent component={GeneralElements} />,
             },
             {
-              path: 'advanced',
+              path: "advanced",
               element: <LoadComponent component={FormAdvanced} />,
             },
             {
-              path: 'validation',
+              path: "validation",
               element: <LoadComponent component={Validation} />,
             },
             {
-              path: 'wizard',
+              path: "wizard",
               element: <LoadComponent component={FormWizard} />,
             },
             {
-              path: 'upload',
+              path: "upload",
               element: <LoadComponent component={FileUpload} />,
             },
             {
-              path: 'editors',
+              path: "editors",
               element: <LoadComponent component={Editors} />,
             },
           ],
         },
         {
-          path: 'tables',
+          path: "tables",
           children: [
             {
-              path: 'basic',
+              path: "basic",
               element: <LoadComponent component={BasicTable} />,
             },
             {
-              path: 'advanced',
+              path: "advanced",
               element: <LoadComponent component={AdvancedTable} />,
             },
           ],
         },
         {
-          path: 'charts',
+          path: "charts",
           children: [
             {
-              path: 'apex',
+              path: "apex",
               element: <LoadComponent component={ApexChart} />,
             },
             {
-              path: 'chartjs',
+              path: "chartjs",
               element: <LoadComponent component={ChartJs} />,
             },
           ],
         },
         {
-          path: 'maps',
+          path: "maps",
           children: [
             {
-              path: 'google',
+              path: "google",
               element: <LoadComponent component={GoogleMaps} />,
             },
             {
-              path: 'vector',
+              path: "vector",
               element: <LoadComponent component={VectorMaps} />,
             },
           ],
