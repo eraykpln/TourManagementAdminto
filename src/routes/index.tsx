@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { useRoutes } from 'react-router-dom';
 
 // layouts
@@ -9,6 +9,7 @@ import HorizontalLayout from '../layouts/Horizontal/';
 // components
 import PrivateRoute from './PrivateRoute';
 import Root from './Root';
+
 
 // constants
 import { LayoutTypes } from '../constants';
@@ -110,6 +111,10 @@ const VectorMaps = React.lazy(() => import('../pages/maps/VectorMaps'));
 // lamding
 const Landing = React.lazy(() => import('../pages/Landing'));
 
+// customers
+const CustomerListPage = React.lazy(() => import('../pages/customers/customer-list'));
+const AddCustomerPage = React.lazy(() => import('../pages/customers/add-customer'));
+
 const loading = () => <div className=""></div>;
 
 type LoadComponentProps = {
@@ -117,9 +122,9 @@ type LoadComponentProps = {
 };
 
 const LoadComponent = ({ component: Component }: LoadComponentProps) => (
-  <Suspense fallback={loading()}>
+  <React.Suspense fallback={loading()}>
     <Component />
-  </Suspense>
+  </React.Suspense>
 );
 
 const AllRoutes = () => {
@@ -455,6 +460,19 @@ const AllRoutes = () => {
             {
               path: 'vector',
               element: <LoadComponent component={VectorMaps} />,
+            },
+          ],
+        },
+        {
+          path: 'customers',
+          children: [
+            {
+              path: 'list',
+              element: <LoadComponent component={CustomerListPage} />,
+            },
+            {
+              path: 'add',
+              element: <LoadComponent component={AddCustomerPage} />,
             },
           ],
         },

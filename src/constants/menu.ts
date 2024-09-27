@@ -26,6 +26,26 @@ const MENU_ITEMS: MenuItemTypes[] = [
 
     { key: 'apps', label: 'Apps', isTitle: true },
     {
+        key: 'apps-customers',
+        label: 'Customers',
+        isTitle: false,
+        icon: 'mdi mdi-account-group-outline',
+        children: [
+            {
+                key: 'customer-list',
+                label: 'Customer List',
+                url: '/customers/list',
+                parentKey: 'apps-customers',
+            },
+            {
+                key: 'add-customer',
+                label: 'Add Customer',
+                url: '/customers/add',
+                parentKey: 'apps-customers',
+            },
+        ],
+    },
+    {
         key: 'apps-calendar',
         label: 'Calendar',
         isTitle: false,
@@ -727,6 +747,26 @@ const HORIZONTAL_MENU_ITEMS: MenuItemTypes[] = [
                         label: 'Profile',
                         url: '/apps/contacts/profile',
                         parentKey: 'apps-contacts',
+                    },
+                ],
+            },
+            {
+                key: 'apps-customers',
+                label: 'Customers',
+                isTitle: false,
+                icon: 'mdi mdi-account-group-outline',
+                children: [
+                    {
+                        key: 'customer-list',
+                        label: 'Customer List',
+                        url: '/apps/customers/list',
+                        parentKey: 'apps-customers',
+                    },
+                    {
+                        key: 'add-customer',
+                        label: 'Add Customer',
+                        url: '/apps/customers/add',
+                        parentKey: 'apps-customers',
                     },
                 ],
             },

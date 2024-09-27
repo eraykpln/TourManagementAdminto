@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
 
 // hooks
@@ -9,9 +9,11 @@ import { changeBodyAttribute } from '../utils';
 
 const loading = () => <div className=""></div>;
 
-type DefaultLayoutProps = {};
+type DefaultLayoutProps = {
+    children?: ReactNode; // children prop'u ekleniyor
+};
 
-const DefaultLayout = (props: DefaultLayoutProps) => {
+const DefaultLayout = ({ children }: DefaultLayoutProps) => {
     const { appSelector } = useRedux();
 
     const { layoutColor } = appSelector((state) => ({
@@ -24,8 +26,9 @@ const DefaultLayout = (props: DefaultLayoutProps) => {
 
     return (
         <Suspense fallback={loading()}>
-            <Outlet />
+            {children || <Outlet />}
         </Suspense>
     );
 };
+
 export default DefaultLayout;
