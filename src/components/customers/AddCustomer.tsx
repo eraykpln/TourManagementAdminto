@@ -6,27 +6,41 @@ import * as yup from 'yup';
 import { FormInput } from '../../components/form';
 
 interface IFormInput {
-    name: string;
-    surname: string;
+    birth_date: string;
+    passport_expiry_date: string;
+    passport_issue_date: string;
+    visa_expiry_date: string;
+    company_info: string;
     email: string;
+    ethnicity: string;
+    first_name: string;
+    last_name: string;
+    passport_image: FileList;
+    passport_no: number;
+    passport_type: string;
     phone: string;
-    address: string;
-    city: string;
-    country: string;
-    zip: string;
-    personalInfo: string;
+    shengen_status: string;
+    tckn: number;
+    work_field: string;
 }
 
 const schema = yup.object().shape({
-    name: yup.string().required('Name is required'),
-    surname: yup.string().required('Surname is required'),
-    email: yup.string().required('Email is required').email('Enter a valid email'),
-    phone: yup.string().required('Phone is required'),
-    address: yup.string().required('Address is required'),
-    city: yup.string().required('City is required'),
-    country: yup.string().required('Country is required'),
-    zip: yup.string().required('Zip is required'),
-    personalInfo: yup.string().required('Personal Info is required'),
+    birth_date: yup.string().required('Doğum tarihi gereklidir'),
+    passport_expiry_date: yup.string().required('Pasaport bitiş tarihi gereklidir'),
+    passport_issue_date: yup.string().required('Pasaport veriliş tarihi gereklidir'),
+    visa_expiry_date: yup.string().required('Vize bitiş tarihi gereklidir'),
+    company_info: yup.string().required('Şirket bilgisi gereklidir'),
+    email: yup.string().required('Email gereklidir').email('Geçerli bir email giriniz'),
+    ethnicity: yup.string().required('Etnik köken gereklidir'),
+    first_name: yup.string().required('İsim gereklidir'),
+    last_name: yup.string().required('Soyisim gereklidir'),
+    passport_image: yup.mixed().required('Pasaport resmi gereklidir'),
+    passport_no: yup.number().required('Pasaport numarası gereklidir'),
+    passport_type: yup.string().required('Pasaport türü gereklidir'),
+    phone: yup.string().required('Telefon numarası gereklidir'),
+    shengen_status: yup.string().required('Schengen durumu gereklidir'),
+    tckn: yup.number().required('TCKN gereklidir'),
+    work_field: yup.string().required('Çalışma alanı gereklidir'),
 });
 
 const AddCustomer = () => {
@@ -41,16 +55,16 @@ const AddCustomer = () => {
     return (
         <Card>
             <Card.Body>
-                <h4 className="header-title">Add Customer</h4>
+                <h4 className="header-title">Müşteri Ekle</h4>
                 <p className="sub-header">
-                    Fill in the form below to add a new customer.
+                    Yeni bir müşteri eklemek için aşağıdaki formu doldurun.
                 </p>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Row>
                         <Col md={6}>
                             <FormInput
-                                label="Name"
-                                name="name"
+                                label="İsim"
+                                name="first_name"
                                 type="text"
                                 containerClass={'mb-3'}
                                 register={register}
@@ -59,8 +73,8 @@ const AddCustomer = () => {
                         </Col>
                         <Col md={6}>
                             <FormInput
-                                label="Surname"
-                                name="surname"
+                                label="Soyisim"
+                                name="last_name"
                                 type="text"
                                 containerClass={'mb-3'}
                                 register={register}
@@ -69,6 +83,16 @@ const AddCustomer = () => {
                         </Col>
                     </Row>
                     <Row>
+                        <Col md={6}>
+                            <FormInput
+                                label="Doğum Tarihi"
+                                name="birth_date"
+                                type="date"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
                         <Col md={6}>
                             <FormInput
                                 label="Email"
@@ -79,9 +103,11 @@ const AddCustomer = () => {
                                 errors={errors}
                             />
                         </Col>
+                    </Row>
+                    <Row>
                         <Col md={6}>
                             <FormInput
-                                label="Phone"
+                                label="Telefon Numarası"
                                 name="phone"
                                 type="text"
                                 containerClass={'mb-3'}
@@ -89,13 +115,11 @@ const AddCustomer = () => {
                                 errors={errors}
                             />
                         </Col>
-                    </Row>
-                    <Row>
-                        <Col md={12}>
+                        <Col md={6}>
                             <FormInput
-                                label="Address"
-                                name="address"
-                                type="text"
+                                label="TCKN"
+                                name="tckn"
+                                type="number"
                                 containerClass={'mb-3'}
                                 register={register}
                                 errors={errors}
@@ -103,30 +127,20 @@ const AddCustomer = () => {
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={4}>
+                        <Col md={6}>
                             <FormInput
-                                label="City"
-                                name="city"
+                                label="Etnik Köken"
+                                name="ethnicity"
                                 type="text"
                                 containerClass={'mb-3'}
                                 register={register}
                                 errors={errors}
                             />
                         </Col>
-                        <Col md={4}>
+                        <Col md={6}>
                             <FormInput
-                                label="Country"
-                                name="country"
-                                type="text"
-                                containerClass={'mb-3'}
-                                register={register}
-                                errors={errors}
-                            />
-                        </Col>
-                        <Col md={4}>
-                            <FormInput
-                                label="Zip"
-                                name="zip"
+                                label="Çalışma Alanı"
+                                name="work_field"
                                 type="text"
                                 containerClass={'mb-3'}
                                 register={register}
@@ -135,19 +149,95 @@ const AddCustomer = () => {
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={12}>
+                        <Col md={6}>
                             <FormInput
-                                label="Personal Info"
-                                name="personalInfo"
-                                type="textarea"
-                                rows={3}
+                                label="Şirket Bilgisi"
+                                name="company_info"
+                                type="text"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
+                        <Col md={6}>
+                            <FormInput
+                                label="Pasaport Numarası"
+                                name="passport_no"
+                                type="number"
                                 containerClass={'mb-3'}
                                 register={register}
                                 errors={errors}
                             />
                         </Col>
                     </Row>
-                    <Button type="submit" className="mt-3">Add Customer</Button>
+                    <Row>
+                        <Col md={6}>
+                            <FormInput
+                                label="Pasaport Türü"
+                                name="passport_type"
+                                type="text"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
+                        <Col md={6}>
+                            <FormInput
+                                label="Pasaport Resmi"
+                                name="passport_image"
+                                type="file"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={6}>
+                            <FormInput
+                                label="Pasaport Veriliş Tarihi"
+                                name="passport_issue_date"
+                                type="date"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
+                        <Col md={6}>
+                            <FormInput
+                                label="Pasaport Bitiş Tarihi"
+                                name="passport_expiry_date"
+                                type="date"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={6}>
+                            <FormInput
+                                label="Vize Bitiş Tarihi"
+                                name="visa_expiry_date"
+                                type="date"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
+                        <Col md={6}>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Schengen Durumu</Form.Label>
+                                <Form.Select {...register("shengen_status")}>
+                                    <option value="">Seçiniz</option>
+                                    <option value="true">Var</option>
+                                    <option value="false">Yok</option>
+                                </Form.Select>
+                                {errors.shengen_status && <p className="text-danger">{errors.shengen_status.message}</p>}
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <Button type="submit" className="mt-3">Müşteri Ekle</Button>
                 </Form>
             </Card.Body>
         </Card>
