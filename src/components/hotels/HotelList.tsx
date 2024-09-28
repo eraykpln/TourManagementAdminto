@@ -4,15 +4,35 @@ import Table from '../Table';
 import { useNavigate } from 'react-router-dom';
 
 const hotels = [
-    { id: 1, name: 'Hotel 1', location: 'Location 1' },
-    { id: 2, name: 'Hotel 2', location: 'Location 2' },
+    {
+        id: 1,
+        name: 'Hotel 1',
+        address: 'Address 1',
+        city: 'City 1',
+        country: 'Country 1',
+        email: 'hotel1@example.com',
+        phone: '123-456-7890',
+    },
+    {
+        id: 2,
+        name: 'Hotel 2',
+        address: 'Address 2',
+        city: 'City 2',
+        country: 'Country 2',
+        email: 'hotel2@example.com',
+        phone: '098-765-4321',
+    },
     // Add more dummy hotels as needed
 ];
 
 const columns = [
     { Header: 'ID', accessor: 'id', sort: true },
-    { Header: 'Name', accessor: 'name', sort: true },
-    { Header: 'Location', accessor: 'location', sort: true },
+    { Header: 'İsim', accessor: 'name', sort: true },
+    { Header: 'Adres', accessor: 'address', sort: true },
+    { Header: 'Şehir', accessor: 'city', sort: true },
+    { Header: 'Ülke', accessor: 'country', sort: true },
+    { Header: 'Email', accessor: 'email', sort: true },
+    { Header: 'Telefon Numarası', accessor: 'phone', sort: true },
 ];
 
 const sizePerPageList = [
@@ -35,9 +55,9 @@ const HotelList = () => {
                 <Card>
                     <Card.Body>
                         <div className="d-flex justify-content-between align-items-center mb-3">
-                            <h4 className="header-title">Hotel List</h4>
+                            <h4 className="header-title">Otel Listesi</h4>
                             <Button variant="primary" onClick={handleAddHotel}>
-                                Add Hotel
+                                Otel Ekle
                             </Button>
                         </div>
                         <Table
@@ -47,6 +67,7 @@ const HotelList = () => {
                             sizePerPageList={sizePerPageList}
                             isSortable={true}
                             pagination={true}
+                            isSearchable={true}
                         />
                     </Card.Body>
                 </Card>

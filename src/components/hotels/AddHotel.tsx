@@ -6,13 +6,21 @@ import * as yup from 'yup';
 import { FormInput } from '../form';
 
 interface IFormInput {
+    address: string;
+    city: string;
+    country: string;
+    email: string;
     name: string;
-    location: string;
+    phone: string;
 }
 
 const schema = yup.object().shape({
-    name: yup.string().required('Name is required'),
-    location: yup.string().required('Location is required'),
+    address: yup.string().required('Adres gereklidir'),
+    city: yup.string().required('Şehir gereklidir'),
+    country: yup.string().required('Ülke gereklidir'),
+    email: yup.string().required('Email gereklidir').email('Geçerli bir email giriniz'),
+    name: yup.string().required('İsim gereklidir'),
+    phone: yup.string().required('Telefon numarası gereklidir'),
 });
 
 const AddHotel = () => {
@@ -27,12 +35,15 @@ const AddHotel = () => {
     return (
         <Card>
             <Card.Body>
-                <h4 className="header-title">Add Hotel</h4>
+                <h4 className="header-title">Otel Ekle</h4>
+                <p className="sub-header">
+                    Yeni bir otel eklemek için aşağıdaki formu doldurun.
+                </p>
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Row>
                         <Col md={6}>
                             <FormInput
-                                label="Name"
+                                label="İsim"
                                 name="name"
                                 type="text"
                                 containerClass={'mb-3'}
@@ -42,8 +53,30 @@ const AddHotel = () => {
                         </Col>
                         <Col md={6}>
                             <FormInput
-                                label="Location"
-                                name="location"
+                                label="Email"
+                                name="email"
+                                type="email"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col md={6}>
+                            <FormInput
+                                label="Telefon Numarası"
+                                name="phone"
+                                type="text"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
+                        <Col md={6}>
+                            <FormInput
+                                label="Adres"
+                                name="address"
                                 type="text"
                                 containerClass={'mb-3'}
                                 register={register}
@@ -51,7 +84,29 @@ const AddHotel = () => {
                             />
                         </Col>
                     </Row>
-                    <Button type="submit" className="mt-3">Add Hotel</Button>
+                    <Row>
+                        <Col md={6}>
+                            <FormInput
+                                label="Şehir"
+                                name="city"
+                                type="text"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
+                        <Col md={6}>
+                            <FormInput
+                                label="Ülke"
+                                name="country"
+                                type="text"
+                                containerClass={'mb-3'}
+                                register={register}
+                                errors={errors}
+                            />
+                        </Col>
+                    </Row>
+                    <Button type="submit" className="mt-3">Otel Ekle</Button>
                 </Form>
             </Card.Body>
         </Card>
